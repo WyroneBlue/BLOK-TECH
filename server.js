@@ -1,49 +1,33 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const { engine } = require ('express-handlebars');
+const port = 3000;
 
-app
-  .use('/static', express.static('static'))
-  .set('view engine', 'hbs')
-  .set('views', 'views')
+const app = express();
 
-app.get('/', (req, res) => {
-  res.status(200).send('Home')
-})
+app.engine('hbs', engine({ 
+  extname: 'hbs', 
+  defaultLayout: 'main', 
+  layoutsDir: __dirname + '/views/layouts/',
+  partialsDir: __dirname + '/views/partials/'
+}));
+app.set('view engine', 'hbs');
+app.set("views", "./views");
+app.use('/static', express.static("static"));
 
-app.get('/login', (req, res) => {
-  res.status(200).send('Login')
-})
+const { home, restaurants, matches, register, login} = require("./routes");
 
-app.get('/register', (req, res) => {
-  res.status(200).send('About')
-})
-
-app.get('/matches', (req, res) => {
-  res.status(200).send('Matches')
-})
-
-app.get('/restaurants', (req, res) => {
-
-  const movies = [
-    {
-      name: "Spiderman: No Way Home",
-      release: "2021"
-    },
-    {
-      name: "James Bond",
-      release: "2021"
-    },
-    {
-      name: "Don't Look Up",
-      release: "2021"
-    },
-  ]
-  res.status(200).render('restaurants.hbs', { data: movies })
-})
+app.use('/', home)
+app.use('/restaurants', restaurants)
+app.use('/matches', matches)
+app.use('/register', register)
+app.use('/login', login)
+// app.use('/test', home)
 
 app.get('*', (req, res) => {
-  res.status(404).send('Page not found!');
+  const page = {
+    title: "Not Found"
+  };
+  res.status(404).render('404.hbs', { page: page })
 })
 
 app.listen(port, () => {
