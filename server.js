@@ -3,7 +3,26 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.status(200).send('Home')
+})
+
+app.get('/login', (req, res) => {
+  res.status(200).send('Login')
+})
+
+app.get('/register', (req, res) => {
+  res.status(200).send('About')
+})
+
+app.get('/matches', (req, res) => {
+  res.status(200).send('Matches')
+})
+app.get('/restaurants', (req, res) => {
+  res.status(200).render('restaurants.hbs', { data: movies })
+})
+
+app.get('*', (req, res) => {
+  res.status(404).send('Page not found!');
 })
 
 app.listen(port, () => {
