@@ -2,6 +2,11 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+app
+  .use('/static', express.static('static'))
+  .set('view engine', 'hbs')
+  .set('views', 'views')
+
 app.get('/', (req, res) => {
   res.status(200).send('Home')
 })
@@ -17,6 +22,7 @@ app.get('/register', (req, res) => {
 app.get('/matches', (req, res) => {
   res.status(200).send('Matches')
 })
+
 app.get('/restaurants', (req, res) => {
 
   const movies = [
