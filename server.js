@@ -18,6 +18,21 @@ app.get('/matches', (req, res) => {
   res.status(200).send('Matches')
 })
 app.get('/restaurants', (req, res) => {
+
+  const movies = [
+    {
+      name: "Spiderman: No Way Home",
+      release: "2021"
+    },
+    {
+      name: "James Bond",
+      release: "2021"
+    },
+    {
+      name: "Don't Look Up",
+      release: "2021"
+    },
+  ]
   res.status(200).render('restaurants.hbs', { data: movies })
 })
 
