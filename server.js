@@ -1,9 +1,13 @@
+// Express Setup
 const express = require('express');
-const { engine } = require ('express-handlebars');
+const app = express();
 const port = 3000;
 
-const app = express();
+// Routes
+const routes = require("./routes");
 
+// HBS Setup
+const { engine } = require ('express-handlebars');
 app.engine('hbs', engine({ 
   extname: 'hbs', 
   defaultLayout: 'main', 
@@ -14,21 +18,8 @@ app.set('view engine', 'hbs');
 app.set("views", "./views");
 app.use('/static', express.static("static"));
 
-const { home, restaurants, matches, register, login} = require("./routes");
-
-app.use('/', home)
-app.use('/restaurants', restaurants)
-app.use('/matches', matches)
-app.use('/register', register)
-app.use('/login', login)
-// app.use('/test', home)
-
-app.get('*', (req, res) => {
-  const page = {
-    title: "Not Found"
-  };
-  res.status(404).render('404.hbs', { page: page })
-})
+// Use Routes
+app.use('/', urlencodedParser, routes)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
