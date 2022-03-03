@@ -3,6 +3,10 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+// BodyParser
+const bodyParser = require('body-parser')
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 // Routes
 const routes = require("./routes");
 
