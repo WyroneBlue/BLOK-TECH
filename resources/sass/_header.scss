@@ -6,15 +6,15 @@ header{
     height: 60px;
     padding: 20px 40px;
     background-color: $app-color; 
-}
-  
-header ul {
-    display: flex;
-    gap: 0.5em;
-}
-  
-header ul li{
-    padding: 5px 10px;
-    background-color: white;
-    border-radius: 5px;
+
+    ul {
+        display: flex;
+        gap: 0.5em;
+
+        li {
+            padding: 5px 10px;
+            background-color: white;
+            border-radius: 5px;
+        }
+    }
 }
