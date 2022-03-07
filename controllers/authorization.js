@@ -21,7 +21,6 @@ const registerSuccess = (req, res) => {
 	const page = {
 		title: "Registered Succesfully"
     };
-	console.log(req);
 	const input = req.body;
 
 	const form = {
