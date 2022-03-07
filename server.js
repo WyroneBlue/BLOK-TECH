@@ -1,7 +1,8 @@
 // Express Setup
 const express = require('express');
+const path = require('path')
 const app = express();
-const port = process.env.Port || 3000;
+const PORT = process.env.PORT || 3000;
 
 // BodyParser
 const bodyParser = require('body-parser')
@@ -20,11 +21,11 @@ app.engine('hbs', engine({
 }));
 app.set('view engine', 'hbs');
 app.set("views", "./views");
-app.use('/static', express.static("static"));
+app.use('/public', express.static(path.join(__dirname, 'public')))
 
 // Use Routes
 app.use('/', urlencodedParser, routes)
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`)
 })
