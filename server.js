@@ -1,7 +1,7 @@
 // Express Setup
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.Port || 3000;
 
 // BodyParser
 const bodyParser = require('body-parser')
