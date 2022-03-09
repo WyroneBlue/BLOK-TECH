@@ -7,12 +7,32 @@
 
 body{
     background-color: $section-color;
+    padding-bottom: $footer-height + ($big-button-height * 0.75);
+    font-family: 'Omnes-pro', Geneva, Tahoma, sans-serif;
+}
+
+p{
+    font-size: 1em;
+}
+
+h1, h2, h3, h4, h5, h6, h7, h8, h9{
+    font-family: 'filson-soft', Geneva, Tahoma, sans-serif;
 }
 
 main{
-    padding: 20px 40px;
+    padding: 30px 20px;
 }
 
 ul{
     list-style: none;
+}
+
+.snap{
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;  
+
+    &::-webkit-scrollbar{
+        display: none;
+    }
 }
