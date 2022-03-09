@@ -1,0 +1,19 @@
+<h1>Rating</h1>
+
+<form action="/restaurants/{{ restaurant_id }}/rating" method="POST">
+    <label for="rating">
+        Rating:
+        <input type="range" name="rating" min="1" max="5" step=".1">
+    </label>
+    <label for="anon">
+        Anonymous:
+        <input type="checkbox" name="anon" placeholder="Fill in your school...">
+    </label>
+    <label for="remark">
+        Remark:
+        <textarea type="text" name="remark" placeholder="Fill in your name..."></textarea>
+    </label>
+    <button type="submit">
+        Post Rating
+    </button>
+</form>
