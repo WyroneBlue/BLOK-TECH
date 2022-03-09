@@ -1,9 +1,28 @@
 /* 
   Custom Properties
 */
+
+// Header
+$big-button-height: 80px;
+$big-button-width: $big-button-height;
+
+// Colors
 $text-color: #111111;
+$text-color-light: rgba($text-color, 0.8);
 $section-color: #f7f7f7;
 $app-color: lightblue;
+$btn-color: #FFBD2F;
+$btn-color-light: #FCD278;
+$header-color: #F2F2F2;
+
+// border
+$border-light: 2px solid rgba($text-color, 0.1);
+$radius-standard: .5em;
+$radius-pill: 1.5em;
+$radius-round: 50%;
+
+// Sizes
+$footer-height: 65px;
 
 /* 
   Einde Custom Properties
