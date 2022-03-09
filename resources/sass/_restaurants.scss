@@ -1,0 +1,155 @@
+article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+
+    #top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a{
+            display: grid;
+            place-items: center;
+            padding: 5px 10px;
+            width: 70px;
+            height: 35px;
+            border-radius: .5em;
+            background-color: $btn-color;
+        }
+    }
+    
+    #middle{
+        display: flex;
+        flex-direction: column;
+        gap: 1.25em;
+
+        & > section{
+
+            &:first-of-type{
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                gap: 30px;
+                overflow: scroll;
+                
+                img{
+                    width: 200px;
+                    height: auto;
+                    border-radius: 1em;
+                }
+            }
+
+            &:nth-of-type(2){
+                display: flex;
+                flex-direction: column;
+                gap: .5em;
+                
+                div{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    gap: .5em;
+
+                    h1{
+                        font-size: 1.5em;
+                        flex-shrink: 1;
+                    }
+                    
+                    a{
+                        flex-shrink: 0;
+                        display: grid;
+                        place-items: center;
+                        padding: 5px 10px;
+                        width: 70px;
+                        height: 35px;
+                        border-radius: .5em;
+                        background-color: $btn-color;
+                    }
+                }
+
+                ul{
+                    display: flex;
+                    flex-wrap: nowrap;
+                    overflow-x: auto;
+                    gap: 5px;
+        
+                    li{
+                        flex-shrink: 0;
+                        padding: 5px 10px;
+                        background-color: $btn-color-light;
+                        border: 1px solid $text-color;
+                    }
+                }
+            }
+
+            &:nth-of-type(3){
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                
+                ul{
+                    display: flex;
+                    gap: 5px;
+                    overflow-x: hidden;
+
+                    li{
+                        overflow: hidden;
+                        img{
+                            width: 35px;
+                        }
+                    }
+                }
+
+                a{
+                    width: max-content;
+                    padding: 5px 10px;
+                    background-color: $btn-color;
+                    color: $text-color;
+                    font-weight: bold;
+                    border-radius: $radius-standard;
+                }
+            }
+        }
+    }
+
+    #bottom{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 20px;
+        border-top: $border-light;
+
+        ul{
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 20px;
+            overflow: scroll;
+
+            li{
+                a{
+                    display: flex;
+                    flex-direction: column;
+                    align-items:center;
+                    color: $text-color-light;
+                    
+                    img{
+                        width: 42px * 2;
+                        height: auto;
+                        border-radius: $radius-round;
+                    }
+
+                    p{
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}
+
+img.saved{
+    animation: img-save .6s ease-in forwards;
+}
