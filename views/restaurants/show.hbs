@@ -1,0 +1,71 @@
+<article>
+    {{!-- <section style="width: 100px; overflow: hidden;">
+        <span style="width: 200px; background-color: red;">
+            hallo daar ik ben ymaro
+        </span>
+    </section> --}}
+    <section id="top" class="heading">
+        <a href="/restaurants">
+            <img src="/public/images/icons/back.svg" alt="Go Back Icon">
+        </a>
+        <h2>Details</h2>
+        <img class="save-restaurant {{ bool true 'saved' }}" 
+            {{#if true }}
+                src="/public/images/icons/heart-filled.svg"
+            {{else }}
+                src="/public/images/icons/heart-border.svg"
+            {{/if }}
+                data-saved="/public/images/icons/heart-filled.svg" 
+                data-unsaved="/public/images/icons/heart-border.svg" 
+                alt="Save Restaurant Icon"
+            />
+    </section>
+    <section id="middle">
+        <section class="snap">
+            <img src="/public/images/restaurant.jpg" alt="">
+            <img src="/public/images/restaurant.jpg" alt="">
+            <img src="/public/images/restaurant.jpg" alt="">
+            <img src="/public/images/restaurant.jpg" alt="">
+        </section>
+        <section>
+            <div>
+                <h1>{{ restaurant.name }}</h1>
+                <a href="https://www.google.com/maps">
+                    <img src="/public/images/icons/route.svg" alt="">
+                </a>
+            </div>
+            <ul>
+                <li>Wok</li>
+                <li>All-you-can-eat</li>
+            </ul>
+        </section>
+        <section>
+            <ul class="snap" style="width: {{ divide 200 1 }}px">
+                {{#each users}}
+                    <li>
+                        <img src="/public/images/icons/star.svg" alt="">
+                    </li>
+                 {{/each}}
+            </ul>
+            <a href="{{ restaurant.id }}/reviews">
+                Bekijk reviews
+            </a>
+        </section>
+        <p>
+            {{ restaurant.description }}
+        </p>
+    </section>
+    <section id="bottom">
+        <h2>Wilt hier eten</h2>
+        <ul class="snap">
+            {{#each users}}
+                <li>
+                    <a href="#">
+                        <img src="{{ img }}" alt="User Image {{add @index 1 }}">
+                        <p>{{ name }}</p>
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    </section>
+</article>
