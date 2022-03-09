@@ -1,30 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const restaurantController = require("../controllers/restaurants");
 
-router.get('/', (req, res) => {
-	const page = {
-		title: "Restaurants"
-    };
-
-	const movies = [
-        {
-          	name: "Spiderman: No Way Home",
-          	release: "2021"
-        },
-        {
-			name: "James Bond",
-			release: "2021"
-        },
-        {
-			name: "Don't Look Up",
-			release: "2021"
-        },
-	]
-
-	res.status(200).render('restaurants', { 
-		page: page,
-		movies: movies,
-	})
-});
+router.get('/', restaurantController.index);
+router.get('/:id', restaurantController.show);
+router.get('/:id/reviews', restaurantController.reviews);
+router.get('/:id/rate', restaurantController.rating);
+router.post('/:id/rate', restaurantController.saveRating);
 
 module.exports = router;

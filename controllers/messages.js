@@ -1,13 +1,13 @@
 const index = (req, res) => {
     const page = {
-		title: "Matches"
+		title: "Profile"
     };
     
-	res.status(200).render('matches/index', { 
+	res.status(200).render('profile/messages', { 
 		page: page,
 	})
 };
 
 module.exports = {
-	index: index
+	index: index,
 };
