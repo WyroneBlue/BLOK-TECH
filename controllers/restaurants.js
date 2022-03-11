@@ -2,29 +2,19 @@ const Restaurant = require('../models/Restaurant');
 const Rating = require('../models/Rating');
 
 const index = (req, res) => {
-	const page = {
-		title: "Restaurants"
-    };
+	
+	Promise.all([Restaurant.find({}).lean()])
+    .then(result => {
+		const [restaurants] = result;
+		const page = {
+			title: "Restaurants"
+		};
 
-	const restaurants = [
-        {
-          	_id: 0,
-			name: "Wereldrestaurant A2",
-        },
-        {
-			_id: 1,
-			name: "Restaurant Vandaag",
-        },
-        {
-			_id: 2,
-			name: "Sumo",
-        },
-	]
-
-	res.status(200).render('restaurants/index', { 
-		page: page,
-		restaurants: restaurants,
-	})
+		res.status(200).render('restaurants/index', { 
+			page: page,
+			restaurants: restaurants,
+		})
+    })
 };
 
 const show = (req, res) => {
