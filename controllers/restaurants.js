@@ -37,15 +37,21 @@ const show = (req, res) => {
 
 
 const reviews = (req, res) => {
-	const page = {
-		title: "Restaurants Reviews"
-    };
-	const restaurant_id = req.params.id;
-	console.log(restaurant_id);
-	res.status(200).render('restaurants/reviews', { 
-		page: page,
-		restaurant_id: restaurant_id,
-	})
+
+	Promise.all([Restaurant.findOne({slug: req.params.slug}).lean(), Rating.find({ restaurant_slug: req.params.slug}).lean()])
+    .then(result => {
+		const [restaurant, reviews] = result;
+
+		const page = {
+			title: `${restaurant.name} reviews`
+		};
+		
+		res.status(200).render('restaurants/reviews', { 
+			page: page,
+			restaurant: restaurant,
+			reviews: reviews,
+		})
+    })
 };
 
 const rating = (req, res) => {
