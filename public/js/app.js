@@ -1,7 +1,7 @@
 const faveBtn = document.querySelector('.save-restaurant');
 
 const toggleRestaurant = (e) => {
-    
+
     e.target.classList.toggle('saved')
     if(e.target.classList.contains('saved')){
 
@@ -14,4 +14,6 @@ const toggleRestaurant = (e) => {
     }
 }
 
-faveBtn.addEventListener('click', toggleRestaurant)
+if(faveBtn){
+    faveBtn.addEventListener('click', toggleRestaurant)
+}
