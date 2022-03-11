@@ -1,19 +1,52 @@
-<h1>Rating</h1>
+<article class="restaurant-reviews">
+    <section id="top" class="heading">
+        <a href="/restaurants/{{ restaurant.slug }}">
+            <img src="/public/images/icons/back.svg" alt="Go Back Icon">
+        </a>
+        <h2>Alle reviews</h2>
+        <img class="save-restaurant {{ bool true 'saved' }}" 
+            {{#if true }}
+                src="/public/images/icons/heart-filled.svg"
+            {{else }}
+                src="/public/images/icons/heart-border.svg"
+            {{/if }}
+                data-saved="/public/images/icons/heart-filled.svg" 
+                data-unsaved="/public/images/icons/heart-border.svg" 
+                alt="Save Restaurant Icon"
+            />
+    </section>
+    <section id="middle">
+        <section class="snap">
+            <img src="/public/images/restaurant.jpg" alt="">
+            <img src="/public/images/restaurant.jpg" alt="">
+            <img src="/public/images/restaurant.jpg" alt="">
+            <img src="/public/images/restaurant.jpg" alt="">
+        </section>
+        <section>
+            <div>
+                <h1>{{ restaurant.name }}</h1>
+                <a href="https://www.google.com/maps">
+                    <img src="/public/images/icons/route.svg" alt="">
+                </a>
+            </div>
+        </section>
 
-<form action="/restaurants/{{ restaurant.slug }}/rate" method="POST">
-    <label for="rating">
-        Rating:
-        <input type="range" name="rating" min="1" max="5" step=".1">
-    </label>
-    <label for="anon">
-        Anonymous:
-        <input type="checkbox" name="anon" placeholder="Fill in your school...">
-    </label>
-    <label for="remark">
-        Remark:
-        <textarea type="text" name="remark" placeholder="Fill in your name..."></textarea>
-    </label>
-    <button type="submit">
-        Post Rating
-    </button>
-</form>
+        <form action="/restaurants/{{ restaurant.slug }}/rate" method="POST">
+            <label for="rating">
+                Rating:
+                <input type="range" name="rating" min="1" max="5" step=".1">
+            </label>
+            <label for="anon">
+                Anonymous:
+                <input type="checkbox" name="anon" placeholder="Fill in your school...">
+            </label>
+            <label for="remark">
+                Remark:
+                <textarea type="text" name="remark" placeholder="Fill in your name..."></textarea>
+            </label>
+            <button type="submit">
+                Post Rating
+            </button>
+        </form>
+    </section>
+</article>
