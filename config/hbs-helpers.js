@@ -14,8 +14,8 @@ const bool = (check, val) => {
 	return check === true ? val : ''; 
 }
 
-const stars = (rating, stars) => {
-    const width = 5 * 35;
+const stars = (rating, stars, starsWidth) => {
+    const width = stars * starsWidth;
     return multiply(divide(rating, stars), width);
 }
 
