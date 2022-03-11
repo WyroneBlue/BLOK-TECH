@@ -56,15 +56,19 @@ const reviews = (req, res) => {
 };
 
 const rating = (req, res) => {
-	const page = {
-		title: "Restaurants Rating"
-    };
-	const restaurant_id = req.params.id;
-	console.log(restaurant_id);
-	res.status(200).render('restaurants/ratingForm', { 
-		page: page,
-		restaurant_id: restaurant_id,
-	})
+	Promise.all([Restaurant.findOne({slug: req.params.slug}).lean()])
+    .then(result => {
+		const [restaurant] = result;
+
+		const page = {
+			title: `Rate ${restaurant.name}`
+		};
+
+		res.status(200).render('restaurants/ratingForm', { 
+			page: page,
+			restaurant: restaurant,
+		})
+    })
 };
 
 const saveRating = (req, res) => {
