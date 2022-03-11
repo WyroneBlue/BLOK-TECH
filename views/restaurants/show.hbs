@@ -40,12 +40,12 @@
             </ul>
         </section>
         <section>
-            <ul class="snap" style="width: {{ divide 200 1 }}px">
-                {{#each users}}
+            <ul class="snap" style="width:{{stars 3.5 5}}px">
+                {{#times 5}}
                     <li>
                         <img src="/public/images/icons/star.svg" alt="">
                     </li>
-                 {{/each}}
+                 {{/times}}
             </ul>
             <a href="{{ restaurant.id }}/reviews">
                 Bekijk reviews
