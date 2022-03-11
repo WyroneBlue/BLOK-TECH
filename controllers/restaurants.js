@@ -84,17 +84,21 @@ const saveRating = (req, res) => {
 		remark: input.remark,
 		anon: input.anon === 'on' ? true : false,
 	}
-	console.log(form);
+
 	const rating = new Rating(form);
 
 	rating.save((err) => {
-		console.log(err);
 		if (err) return handleError(err);
 		// saved!
-	});
-
-	res.status(200).render('home', { 
-		page: page,
+		Promise.all([Restaurant.findOne({slug: req.params.slug}).lean(), Rating.find({ restaurant_slug: req.params.slug}).lean()])
+		.then(result => {
+			const [restaurant, reviews] = result;
+			res.status(200).render('restaurants/reviews', { 
+				page: page,
+				restaurant: restaurant,
+				reviews: reviews,
+			})
+		});
 	})
 };
 
