@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Restaurant = require('../models/Restaurant');
 const Rating = require('../models/Rating');
+const { avgFromObject } = require('../utils/Functions');
 
 const index = (req, res) => {
 	
@@ -20,18 +21,21 @@ const index = (req, res) => {
 
 const show = (req, res) => {
 
-	Promise.all([Restaurant.findOne({slug: req.params.slug}).lean(), User.find({}).lean()])
+	Promise.all([Restaurant.findOne({slug: req.params.slug}).lean(), User.find({}).lean(), Rating.find({ restaurant_slug: req.params.slug}).lean() ])
     .then(result => {
-		const [restaurant, users] = result;
+		const [restaurant, users, reviews] = result;
 
 		const page = {
 			title: restaurant.name
 		};
-		
+
+		const avg = avgFromObject(reviews, 'rating').toFixed(1);
+				
 		res.status(200).render('restaurants/show', { 
 			page: page,
 			restaurant: restaurant,
 			users: users,
+			avg: avg,
 		})
     })
 };
