@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const RatingSchema = new Schema({
-  restaurant_id: String,
+  restaurant_slug: String,
   user_id: String,
   rating: Number,
   remark: String,

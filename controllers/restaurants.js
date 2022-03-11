@@ -96,7 +96,7 @@ const saveRating = (req, res) => {
 
 	const input = req.body;
 	const form = {
-		restaurant_id: req.params.id,
+		restaurant_slug: req.params.slug,
 		user_id: 0,
 		rating: input.rating,
 		remark: input.remark,

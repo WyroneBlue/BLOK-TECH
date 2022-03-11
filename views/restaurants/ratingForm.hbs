@@ -1,6 +1,6 @@
 <h1>Rating</h1>
 
-<form action="/restaurants/{{ restaurant_id }}/rating" method="POST">
+<form action="/restaurants/{{ restaurant.slug }}/rate" method="POST">
     <label for="rating">
         Rating:
         <input type="range" name="rating" min="1" max="5" step=".1">

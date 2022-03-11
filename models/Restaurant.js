@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 
 const RestaurantSchema = new Schema({
   name: String,
+  slug: String,
   description: String,
   image: String,
 });
