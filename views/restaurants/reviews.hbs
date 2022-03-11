@@ -15,13 +15,53 @@
                 alt="Save Restaurant Icon"
             />
     </section>
+    <section id="middle">
+        <section class="snap">
+            <img src="/public/images/restaurant.jpg" alt="">
+            <img src="/public/images/restaurant.jpg" alt="">
+            <img src="/public/images/restaurant.jpg" alt="">
+            <img src="/public/images/restaurant.jpg" alt="">
+        </section>
+        <section>
+            <div>
+                <h1>{{ restaurant.name }}</h1>
+                <a href="https://www.google.com/maps">
+                    <img src="/public/images/icons/route.svg" alt="">
+                </a>
+            </div>
+        </section>
+        <ul>
+            {{#each reviews}}
+                <li>
+                    <span>{{ rating }}</span>
+                    <section>
+                        <div>
+                            {{#if anon }}
+                                <img src="/public/images/users.png" alt="Reviewer Image {{add @index 1 }}">
+                                <p>Anonymous</p>
+                            {{else }}
+                                <img src="https://picsum.photos/200" alt="Reviewer Image {{add @index 1 }}">
+                                <p>name</p>
+                            {{/if }}
+                        </div>
+                        <div>
+                            <ul class="snap" style="width:{{stars rating 5 25}}px">
+                                {{#times 5}}
+                                    <li>
+                                        <img src="/public/images/icons/star.svg" alt="">
+                                    </li>
+                                {{/times}}
+                            </ul>
+                            <p>
+                                {{ remark }}
+                            </p>
+                        </div>
+                    </section>
+                </li>
+            {{/each}}
+        </ul>
+        <a href="rate">
+            Geef {{ restaurant.name }} een rating
+        </a>
+    </section>
 </article>
-<h1>reviews</h1>
-<ul>
-    {{#each reviews}}
-        <li>{{ remark }} - {{ rating }}</li>
-    {{/each}}
-</ul>
-<a href="rate">
-    rate {{ restaurant.name }}
-</a>

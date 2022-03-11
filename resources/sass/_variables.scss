@@ -11,9 +11,11 @@ $text-color: #111111;
 $text-color-light: rgba($text-color, 0.8);
 $section-color: #f7f7f7;
 $app-color: lightblue;
+$app-body: #fff;
 $btn-color: #FFBD2F;
 $btn-color-light: #FCD278;
-$header-color: #F2F2F2;
+$app-grey: #F2F2F2;
+$header-color: $app-grey;
 
 // border
 $border-light: 2px solid rgba($text-color, 0.1);
