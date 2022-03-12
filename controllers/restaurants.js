@@ -43,7 +43,12 @@ const show = (req, res) => {
 
 const reviews = (req, res) => {
 
-	Promise.all([Restaurant.findOne({slug: req.params.slug}).lean(), Rating.find({ restaurant_slug: req.params.slug}).lean()])
+	const promises = [
+		Restaurant.findOne({slug: req.params.slug}).lean(), 
+		Rating.find({ restaurant_slug: req.params.slug}).sort({ created: -1 }).lean()
+	];
+	
+	Promise.all(promises)
     .then(result => {
 		const [restaurant, reviews] = result;
 

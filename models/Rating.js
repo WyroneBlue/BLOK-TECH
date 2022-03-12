@@ -10,6 +10,7 @@ const RatingSchema = new Schema({
   rating: Number,
   remark: String,
   anon: Boolean,
+  created: {type: Date, default: Date.now},
 });
 
 const Rating = mongoose.model('Rating', RatingSchema);
