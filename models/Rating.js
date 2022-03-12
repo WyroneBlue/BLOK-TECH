@@ -11,6 +11,7 @@ const RatingSchema = new Schema({
   remark: String,
   anon: Boolean,
   created: {type: Date, default: Date.now},
+  user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 const Rating = mongoose.model('Rating', RatingSchema);
