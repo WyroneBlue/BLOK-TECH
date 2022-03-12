@@ -43,7 +43,7 @@ const reviews = (req, res) => {
 
 	const promises = [
 		Restaurant.findOne({slug: req.params.slug}).lean(), 
-		Rating.find({ restaurant_slug: req.params.slug}).sort({ created: -1 }).lean()
+		Rating.find({ restaurant_slug: req.params.slug}).populate("user").sort({ created: -1 }).lean()
 	];
 	
 	Promise.all(promises)
@@ -79,24 +79,28 @@ const rating = (req, res) => {
 };
 
 const saveRating = (req, res) => {
-	const page = {
-		title: "Rating Saved"
-    };
 
-	const input = req.body;
-	const form = {
-		restaurant_slug: req.params.slug,
-		user_id: process.env.USER_ID,
-		rating: input.rating,
-		remark: input.remark,
-		anon: input.anon === 'on' ? true : false,
-	}
+	Promise.all([User.findOne({_id: process.env.USER_ID}).lean()])
+	.then(result => {
+		const [user] = result;
 
-	const rating = new Rating(form);
+		const input = req.body;
+		const form = {
+			restaurant_slug: req.params.slug,
+			user_id: process.env.USER_ID,
+			rating: input.rating,
+			remark: input.remark,
+			anon: input.anon === 'on' ? true : false,
+			user: user
+		}
 
-	rating.save((err) => {
-		if (err) return handleError(err);
-		res.redirect(`/restaurants/${form.restaurant_slug}/reviews`);
+
+		const rating = new Rating(form);
+		
+		rating.save((err) => {
+			if (err) return handleError(err);
+			res.redirect(`/restaurants/${form.restaurant_slug}/reviews`);
+		})
 	})
 };
 
