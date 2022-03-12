@@ -46,7 +46,7 @@
             {{!-- https://www.w3schools.com/howto/howto_css_switch.asp --}}
             <label class="toggle" for="anon">
                 Anoniem:
-                <input type="checkbox" name="anon" checked="{{ review.anon }}">
+                <input type="checkbox" name="anon" {{ bool review.anon 'checked' }}>
                 <span class="slider"></span>
             </label>
             <label for="remark">
