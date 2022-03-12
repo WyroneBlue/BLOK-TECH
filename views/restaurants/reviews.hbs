@@ -40,8 +40,8 @@
                                 <img src="/public/images/users.png" alt="Reviewer Image {{add @index 1 }}">
                                 <p>Anonymous</p>
                             {{else }}
-                                <img src="https://picsum.photos/200" alt="Reviewer Image {{add @index 1 }}">
-                                <p>name</p>
+                                <img src="{{ user.img }}" alt="Reviewer Image {{add @index 1 }}">
+                                <p>{{ user.name }}</p>
                             {{/if }}
                         </div>
                         <div>
