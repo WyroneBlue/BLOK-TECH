@@ -9,6 +9,7 @@ const UserSchema = new Schema({
   email: String,
   school: String,
   img: String,
+  reviews: [{ type: Schema.Types.ObjectId, ref: 'Rating' }]
 });
 
 const User = mongoose.model('User', UserSchema);
