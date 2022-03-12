@@ -93,16 +93,7 @@ const saveRating = (req, res) => {
 
 	rating.save((err) => {
 		if (err) return handleError(err);
-		// saved!
-		Promise.all([Restaurant.findOne({slug: req.params.slug}).lean(), Rating.find({ restaurant_slug: req.params.slug}).lean()])
-		.then(result => {
-			const [restaurant, reviews] = result;
-			res.status(200).render('restaurants/reviews', { 
-				page: page,
-				restaurant: restaurant,
-				reviews: reviews,
-			})
-		});
+		res.redirect(`/restaurants/${form.restaurant_slug}/reviews`);
 	})
 };
 
