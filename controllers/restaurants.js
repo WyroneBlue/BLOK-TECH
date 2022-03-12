@@ -38,76 +38,7 @@ const show = (req, res) => {
     })
 };
 
-
-const reviews = (req, res) => {
-
-	const promises = [
-		Restaurant.findOne({slug: req.params.slug}).lean(), 
-		Rating.find({ restaurant_slug: req.params.slug}).populate("user").sort({ created: -1 }).lean()
-	];
-	
-	Promise.all(promises)
-    .then(result => {
-		const [restaurant, reviews] = result;
-
-		const page = {
-			title: `${restaurant.name} reviews`
-		};
-		
-		res.status(200).render('restaurants/reviews', { 
-			page: page,
-			restaurant: restaurant,
-			reviews: reviews,
-		})
-    })
-};
-
-const rating = (req, res) => {
-	Promise.all([Restaurant.findOne({slug: req.params.slug}).lean()])
-    .then(result => {
-		const [restaurant] = result;
-
-		const page = {
-			title: `Rate ${restaurant.name}`
-		};
-
-		res.status(200).render('restaurants/ratingForm', { 
-			page: page,
-			restaurant: restaurant,
-		})
-    })
-};
-
-const saveRating = (req, res) => {
-
-	Promise.all([User.findOne({_id: process.env.USER_ID}).lean()])
-	.then(result => {
-		const [user] = result;
-
-		const input = req.body;
-		const form = {
-			restaurant_slug: req.params.slug,
-			user_id: process.env.USER_ID,
-			rating: input.rating,
-			remark: input.remark,
-			anon: input.anon === 'on' ? true : false,
-			user: user
-		}
-
-
-		const rating = new Rating(form);
-		
-		rating.save((err) => {
-			if (err) return handleError(err);
-			res.redirect(`/restaurants/${form.restaurant_slug}/reviews`);
-		})
-	})
-};
-
 module.exports = {
     index: index,
     show: show,
-	rating: rating,
-	reviews: reviews,
-	saveRating: saveRating,
 };
