@@ -16,6 +16,14 @@ const bool = (check, val) => {
 	return check === true ? val : ''; 
 }
 
+const compare = (val1, options) => {
+	return (val1 == auth_user_id()) ? options.fn(this) : options.inverse(this);
+}
+
+const auth_user_id = () => {
+    return process.env.USER_ID;
+}
+
 const stars = (rating, stars, starsWidth) => {
     const width = stars * starsWidth;
     return multiply(divide(rating, stars), width);
@@ -40,6 +48,8 @@ module.exports = {
     add: add,
     divide: divide,
     bool: bool,
+    compare: compare,
+    auth_user_id: auth_user_id,
     stars: stars,
     times: times,
     date: date,
