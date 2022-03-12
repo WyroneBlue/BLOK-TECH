@@ -9,6 +9,7 @@ const RestaurantSchema = new Schema({
   slug: String,
   description: String,
   image: String,
+  location: String,
 });
 
 const Restaurant = mongoose.model('Restaurant', RestaurantSchema);
