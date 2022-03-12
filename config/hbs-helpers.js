@@ -1,3 +1,5 @@
+const moment = require('moment'); // require
+
 const multiply = (a, b) => {
 	return a * b; 
 }
@@ -27,6 +29,12 @@ const times = (n, block) => {
     return accum;
 };
 
+// https://stackoverflow.com/questions/32260117/handlebars-date-format-issue
+const date = (date, format) => {
+    var mmnt = moment(date);
+    return mmnt.format(format);
+};
+
 module.exports = {
     multiply: multiply,
     add: add,
@@ -34,4 +42,5 @@ module.exports = {
     bool: bool,
     stars: stars,
     times: times,
+    date: date,
 }
