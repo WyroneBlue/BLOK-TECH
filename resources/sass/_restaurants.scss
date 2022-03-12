@@ -136,6 +136,13 @@ article {
                 background-color: $app-grey;
                 border: 1px solid $app-grey;
                 
+                > a{
+                    width: 100%;
+                    margin: 10px auto 0;
+                    float: right;
+                    font-size: .75em;
+                }
+
                 span{
                     position: absolute;
                     top: 5px;
@@ -174,6 +181,10 @@ article {
                                     width: 25px;
                                     height: auto;
                                 }
+                            }
+
+                            p{
+                                margin-bottom: 10px;
                             }
                         }
                     }
