@@ -1,6 +1,4 @@
-const User = require('../models/User');
-const Restaurant = require('../models/Restaurant');
-const Rating = require('../models/Rating');
+const { User, Restaurant, Rating } = require('../models');
 const { avgFromObject } = require('../utils/Functions');
 
 const index = (req, res) => {
