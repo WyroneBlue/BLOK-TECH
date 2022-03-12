@@ -4,9 +4,8 @@ const mongoose = require('mongoose');
 //Define a schema
 const Schema = mongoose.Schema;
 
-const RatingSchema = new Schema({
+const ReviewSchema = new Schema({
   restaurant_slug: String,
-  user_id: String,
   rating: Number,
   remark: String,
   anon: Boolean,
@@ -14,6 +13,6 @@ const RatingSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
-const Rating = mongoose.model('Rating', RatingSchema);
+const Review = mongoose.model('Review', ReviewSchema);
 
-module.exports = Rating;
+module.exports = Review;
