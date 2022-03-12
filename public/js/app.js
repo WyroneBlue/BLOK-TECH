@@ -6,6 +6,17 @@ const box = document.querySelector('form .toggle input');
 const useVibrationBtn = document.querySelector('form label button');
 let useVibration = false;
 
+const checkVibration = () => {
+    if (!window || !window.navigator || !window.navigator.vibrate) {
+        useVibrationBtn.classList.add('n-a')
+        return;
+    }
+}
+
+const vibrate = (ms = 10) => {
+    navigator.vibrate([ms]);
+}
+
 const toggleRestaurant = (e) => {
 
     e.target.classList.toggle('saved')
@@ -21,7 +32,7 @@ const toggleRestaurant = (e) => {
 const updateRating = (value) => {
     starRating.style.width = `${value}vw`;
     if(useVibration){
-        navigator.vibrate([10]);
+        vibrate();
     }
 }
 
@@ -63,6 +74,4 @@ if(useVibrationBtn){
     });
 }
 
-// window.addEventListener('DOMContentLoaded', (e) => {
-//     useVibration = confirm('Wil je haptics gebruiken voor de slider?');
-// })
+window.addEventListener('DOMContentLoaded', checkVibration)

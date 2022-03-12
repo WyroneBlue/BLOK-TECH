@@ -215,6 +215,10 @@ article {
                         border: 2px solid $text-color;
                         background-color: $btn-color;
                     }
+
+                    &.n-a{
+                        display: none;
+                    }
                 }
             }
 
