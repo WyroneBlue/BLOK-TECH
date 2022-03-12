@@ -83,7 +83,7 @@ const saveRating = (req, res) => {
 	const input = req.body;
 	const form = {
 		restaurant_slug: req.params.slug,
-		user_id: 0,
+		user_id: process.env.USER_ID,
 		rating: input.rating,
 		remark: input.remark,
 		anon: input.anon === 'on' ? true : false,
