@@ -1,7 +1,6 @@
 const faveBtn = document.querySelector('.save-restaurant');
 const starRating = document.querySelector('#star-rating');
 const sliderRating = document.querySelector('#slider-rating');
-const stars = starRating.querySelectorAll('img');
 const toggler = document.querySelector('form .toggle .slider');
 const box = document.querySelector('form .toggle input');
 
@@ -23,8 +22,12 @@ const updateRating = (value) => {
 
 const setSliderRating = (e) => {
     e.preventDefault();
-    let val = calcRating(e.target.value);
-    updateRating(val);
+    if(e.target.value >= 1){
+        let val = calcRating(e.target.value);
+        updateRating(val);
+    } else {
+        e.target.value = 1;
+    }
 }
 
 const calcRating = (rating, stars = 5) => {
@@ -33,8 +36,6 @@ const calcRating = (rating, stars = 5) => {
 }
 
 const toggleBox = (e) => {
-    // e.preventDefault();
-    console.log('click');
     box.checked = !box.checked;
 }
 
@@ -47,6 +48,5 @@ if(sliderRating){
 }
 
 if(toggler){
-    console.log(toggler);
     toggler.addEventListener('click', toggleBox);
 }
