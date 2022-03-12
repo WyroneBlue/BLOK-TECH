@@ -1,4 +1,4 @@
-<article class="restaurant-reviews">
+<article class="restaurant-rate">
     <section id="top" class="heading">
         <a href="/restaurants/{{ restaurant.slug }}/reviews">
             <img src="/public/images/icons/back.svg" alt="Go Back Icon">
@@ -34,18 +34,27 @@
         <form action="/restaurants/{{ restaurant.slug }}/rate" method="POST">
             <label for="rating">
                 Rating:
-                <input type="range" name="rating" min="1" max="5" step=".1">
+                    <ul id="star-rating" class="snap" style="width: {{stars 3 5 17.9}}vw">
+                        {{#times 5}}
+                            <li>
+                                <img src="/public/images/icons/star.svg" alt="Star {{add this 1}}">
+                            </li>
+                        {{/times}}
+                    </ul>
+                <input type="range" name="rating" id="slider-rating" min="1" max="5" step=".1" required>
             </label>
-            <label for="anon">
-                Anonymous:
-                <input type="checkbox" name="anon" placeholder="Fill in your school...">
+            {{!-- https://www.w3schools.com/howto/howto_css_switch.asp --}}
+            <label class="toggle" for="anon">
+                Anoniem:
+                <input type="checkbox" name="anon">
+                <span class="slider"></span>
             </label>
             <label for="remark">
-                Remark:
-                <textarea type="text" name="remark" placeholder="Fill in your name..."></textarea>
+                Extra opmerking:
+                <textarea type="text" name="remark" placeholder="..." required></textarea>
             </label>
             <button type="submit">
-                Post Rating
+                Plaats jouw review
             </button>
         </form>
     </section>

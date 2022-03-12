@@ -4,7 +4,7 @@ article {
     justify-content: space-between;
     gap: 20px;
 
-    &.restaurant-details #top, &.restaurant-reviews #top{
+    &.restaurant-details #top, &.restaurant-reviews #top, &.restaurant-rate #top{
         position: relative;
         display: flex;
         justify-content: space-between;
@@ -161,6 +161,7 @@ article {
                                 border-radius: 50%;
                             }
                         }
+
                         &:last-child{
                             gap: .25em;
                             ul {
@@ -193,6 +194,70 @@ article {
             text-decoration: none;
         }
     }   
+
+    &.restaurant-rate #middle {
+        form{
+            overflow: hidden;
+            gap: 30px;
+
+            label {
+                font-weight: bold;
+                font-size: 1.25em;
+                margin-bottom: 10px;
+            }
+
+            textarea{
+                height: 20vh;
+                padding: 0.75em;
+                border-radius: $radius-standard;
+                background-color: $section-color;
+            }
+
+            button {
+                padding: 1em;
+                background-color: #FFBD2F;
+                color: #111;
+                border: none;
+                border-radius: .5em;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            #slider-rating{
+                -webkit-appearance: none;
+                width: 100%;
+                height: 5px;
+                background: black;
+                border-radius: 10px;
+
+                &::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 35px;
+                    height: 35px;
+                    background: $btn-color-light;
+                    border: 2px solid black;
+                    cursor: pointer;
+                    border-radius: $radius-round;
+                }
+            }
+
+            ul{
+                display: flex;
+                flex-direction: row;
+                overflow: hidden;
+                margin: 20px 0;
+                max-width: 100vw;
+                li{
+                    img{
+                        // width: calc(20vw - 8px);
+                        width: 17.9vw;
+                    }
+                }
+            }
+        }
+    }
+
 
     #bottom{
         display: flex;
