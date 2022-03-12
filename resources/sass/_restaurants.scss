@@ -205,6 +205,17 @@ article {
                 font-weight: bold;
                 font-size: 1.25em;
                 margin-bottom: 10px;
+
+                button{
+                    background-color: $btn-color-light;
+                    width:max-content;
+                    padding: .5em;
+                    
+                    &.active {
+                        border: 2px solid $text-color;
+                        background-color: $btn-color;
+                    }
+                }
             }
 
             textarea{

@@ -33,7 +33,7 @@
 
         <form action="/restaurants/{{ restaurant.slug }}/rate" method="POST">
             <label for="rating">
-                Rating:
+                Rating: <button type="button" class="use-vib">gebruik trilling</button>
                     <ul id="star-rating" class="snap" style="width: {{stars 3 5 17.9}}vw">
                         {{#times 5}}
                             <li>
