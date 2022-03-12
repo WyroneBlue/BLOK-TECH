@@ -91,8 +91,7 @@ const show = (req, res) => {
 const edit = async(req, res) => {
 
 	const input = req.body;
-	console.log(req.params)
-
+	
 	await Review.findByIdAndUpdate(req.params.id, {
 		rating: input.rating,
 		anon: input.anon === 'on' ? true : false,
