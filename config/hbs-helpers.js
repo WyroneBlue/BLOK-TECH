@@ -29,7 +29,6 @@ const stars = (rating, stars, starsWidth) => {
     return multiply(divide(rating, stars), width);
 }
 
-// https://stackoverflow.com/questions/11924452/iterating-over-basic-for-loop-using-handlebars-js
 const times = (n, block) => {
     var accum = '';
     for(var i = 0; i < n; ++i)
@@ -37,7 +36,6 @@ const times = (n, block) => {
     return accum;
 };
 
-// https://stackoverflow.com/questions/32260117/handlebars-date-format-issue
 const date = (date, format) => {
     var mmnt = moment(date);
     return mmnt.format(format);
