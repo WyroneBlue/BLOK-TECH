@@ -15,6 +15,6 @@
     "rules": {
         "semi": ["error", "always"],
         "quotes": ["off", "double"],
-        "indent": ["error", "tab"],
+        "indent": ["error", "tab"]
     }
 }

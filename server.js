@@ -30,7 +30,7 @@ app.set("views", "./views");
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Use Routes
-app.use('/', urlencodedParser, routes)
+app.use('/', urlencodedParser, routes);
 
 app.listen(PORT, () => {
   	console.log(`Example app listening on port ${PORT}`);

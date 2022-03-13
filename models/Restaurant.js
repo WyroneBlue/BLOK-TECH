@@ -5,11 +5,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const RestaurantSchema = new Schema({
-  name: String,
-  slug: String,
-  description: String,
-  image: String,
-  location: String,
+	name: String,
+	slug: String,
+	description: String,
+	image: String,
+	location: String,
 });
 
 const Restaurant = mongoose.model('Restaurant', RestaurantSchema);

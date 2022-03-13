@@ -10,13 +10,13 @@ const profile  = require('./profile');
 const messages  = require('./messages');
 const error  = require('./error');
 
-router.use('/', home)
-router.use('/login', login)
-router.use('/register', register)
-router.use('/restaurants', restaurants)
-router.use('/matches', matches)
-router.use('/profile', profile)
-router.use('/messages', messages)
-router.use('*', error)
+router.use('/', home);
+router.use('/login', login);
+router.use('/register', register);
+router.use('/restaurants', restaurants);
+router.use('/matches', matches);
+router.use('/profile', profile);
+router.use('/messages', messages);
+router.use('*', error);
 
-module.exports = router
+module.exports = router;

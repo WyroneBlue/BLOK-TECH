@@ -7,71 +7,71 @@ const useVibrationBtn = document.querySelector('form label button');
 let useVibration = false;
 
 const checkVibration = () => {
-    if (!window || !window.navigator || !window.navigator.vibrate) {
-        useVibrationBtn.classList.add('n-a')
-        return;
-    }
-}
+	if (!window || !window.navigator || !window.navigator.vibrate) {
+		useVibrationBtn.classList.add('n-a');
+		return;
+	}
+};
 
 const vibrate = (ms = 10) => {
-    navigator.vibrate([ms]);
-}
+	navigator.vibrate([ms]);
+};
 
 const toggleRestaurant = (e) => {
 
-    e.target.classList.toggle('saved')
-    if(e.target.classList.contains('saved')){
+	e.target.classList.toggle('saved');
+	if(e.target.classList.contains('saved')){
 
-        e.target.src = e.target.dataset.saved;
-    } else {
+		e.target.src = e.target.dataset.saved;
+	} else {
 
-        e.target.src = e.target.dataset.unsaved;
-    }
-}
+		e.target.src = e.target.dataset.unsaved;
+	}
+};
 
 const updateRating = (value) => {
-    starRating.style.width = `${value}vw`;
-    if(useVibration){
-        vibrate();
-    }
-}
+	starRating.style.width = `${value}vw`;
+	if(useVibration){
+		vibrate();
+	}
+};
 
 const setSliderRating = (e) => {
-    e.preventDefault();
-    if(e.target.value >= 1){
-        let val = calcRating(e.target.value);
-        updateRating(val);
-    } else {
-        e.target.value = 1;
-    }
-}
+	e.preventDefault();
+	if(e.target.value >= 1){
+		let val = calcRating(e.target.value);
+		updateRating(val);
+	} else {
+		e.target.value = 1;
+	}
+};
 
 const calcRating = (rating, stars = 5) => {
-    const width = stars * 17.9;
-    return ((rating / stars) * width);
-}
+	const width = stars * 17.9;
+	return ((rating / stars) * width);
+};
 
-const toggleBox = (e) => {
-    box.checked = !box.checked;
-}
+const toggleBox = () => {
+	box.checked = !box.checked;
+};
 
 if(faveBtn){
-    faveBtn.addEventListener('click', toggleRestaurant);
+	faveBtn.addEventListener('click', toggleRestaurant);
 }
 
 if(sliderRating){
-    sliderRating.addEventListener('input', setSliderRating, {passive: false});
+	sliderRating.addEventListener('input', setSliderRating, {passive: false});
 }
 
 if(toggler){
-    toggler.addEventListener('click', toggleBox);
+	toggler.addEventListener('click', toggleBox);
 }
 
 if(useVibrationBtn){
-    useVibrationBtn.addEventListener('click', (e) => {
-        e.target.classList.toggle('active')
-        useVibration = !useVibration;
-    });
+	useVibrationBtn.addEventListener('click', (e) => {
+		e.target.classList.toggle('active');
+		useVibration = !useVibration;
+	});
 }
 
-window.addEventListener('DOMContentLoaded', checkVibration)
+window.addEventListener('DOMContentLoaded', checkVibration);

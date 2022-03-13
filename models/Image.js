@@ -5,9 +5,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ImageSchema = new Schema({
-  model_id: String,
-  path: String,
-  alt: String,
+	model_id: String,
+	path: String,
+	alt: String,
 });
 
 const Image = mongoose.model('Image', ImageSchema);
