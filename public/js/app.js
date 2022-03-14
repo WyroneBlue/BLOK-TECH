@@ -1,8 +1,6 @@
 const faveBtn = document.querySelector('.save-restaurant');
 const starRating = document.querySelector('#star-rating');
 const sliderRating = document.querySelector('#slider-rating');
-const toggler = document.querySelector('form .toggle .slider');
-const box = document.querySelector('form .toggle input');
 const useVibrationBtn = document.querySelector('form label button');
 let useVibration = false;
 
@@ -51,20 +49,12 @@ const calcRating = (rating, stars = 5) => {
 	return ((rating / stars) * width);
 };
 
-const toggleBox = () => {
-	box.checked = !box.checked;
-};
-
 if(faveBtn){
 	faveBtn.addEventListener('click', toggleRestaurant);
 }
 
 if(sliderRating){
 	sliderRating.addEventListener('input', setSliderRating, {passive: false});
-}
-
-if(toggler){
-	toggler.addEventListener('click', toggleBox);
 }
 
 if(useVibrationBtn){
